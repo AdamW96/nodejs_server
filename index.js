@@ -8,7 +8,7 @@ const protectRoute = require("./routes").protect;
 const passport = require("passport");
 require("./config/passport")(passport);
 const cors = require("cors");
-
+const port = process.env.PORT || 8080;
 //connect to mongodb
 mongoose
   .connect(process.env.DB_CONNECT, {
@@ -32,6 +32,6 @@ app.use(
   protectRoute
 );
 
-app.listen(8080, () => {
+app.listen(port, () => {
   console.log("Server running on port 8080");
 });
