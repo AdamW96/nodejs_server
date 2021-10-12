@@ -1,4 +1,5 @@
 const express = require("express");
+const router = require("express").Router();
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
@@ -25,6 +26,12 @@ mongoose
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+app.use(
+  "/",
+  router.get("/", (req, res, next) => {
+    res.send("hello, this is nodejs server");
+  })
+);
 app.use("/api/user", authRoute);
 app.use(
   "/api/protect",
